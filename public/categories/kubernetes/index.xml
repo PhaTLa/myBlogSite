@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes on Phạm Tùng Lâm - DevOps Engineer &amp; Solution Architect</title>
+    <link>http://localhost:1313/categories/kubernetes/</link>
+    <description>Recent content in Kubernetes on Phạm Tùng Lâm - DevOps Engineer &amp; Solution Architect</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>phamtunglam.workmail.public@gmail.com (Phạm Tùng Lâm)</managingEditor>
+    <webMaster>phamtunglam.workmail.public@gmail.com (Phạm Tùng Lâm)</webMaster>
+    <copyright>© 2025 Phạm Tùng Lâm. All rights reserved.</copyright>
+    <lastBuildDate>Wed, 08 Oct 2025 10:30:00 +0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building Production-Ready Kubernetes Clusters on AWS EKS</title>
+      <link>http://localhost:1313/production-ready-eks-clusters/</link>
+      <pubDate>Wed, 08 Oct 2025 10:30:00 +0700</pubDate><author>phamtunglam.workmail.public@gmail.com (Phạm Tùng Lâm)</author>
+      <guid>http://localhost:1313/production-ready-eks-clusters/</guid>
+      <description>&lt;h1 id=&#34;building-production-ready-kubernetes-clusters-on-aws-eks&#34;&gt;Building Production-Ready Kubernetes Clusters on AWS EKS&lt;/h1&gt;&#xA;&lt;p&gt;Amazon Elastic Kubernetes Service (EKS) has become the go-to solution for running Kubernetes workloads in AWS. However, setting up a truly production-ready EKS cluster involves much more than just clicking &amp;ldquo;Create Cluster&amp;rdquo; in the AWS console. In this post, I&amp;rsquo;ll walk you through the essential components and best practices I&amp;rsquo;ve learned from deploying and managing EKS clusters in production environments.&lt;/p&gt;&#xA;&lt;h2 id=&#34;-what-makes-a-cluster-production-ready&#34;&gt;🎯 What Makes a Cluster &amp;ldquo;Production-Ready&amp;rdquo;?&lt;/h2&gt;&#xA;&lt;p&gt;Before diving into the technical details, let&amp;rsquo;s define what we mean by &amp;ldquo;production-ready&amp;rdquo;:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

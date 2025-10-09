@@ -1,0 +1,6 @@
+[submodule "content/posts"]
+	path = content/posts
+	url = https://github.com/PhaTLa/myBlogPosts.git
+[submodule "themes/LoveIt"]
+	path = themes/LoveIt
+	url = https://github.com/dillonzq/LoveIt.git

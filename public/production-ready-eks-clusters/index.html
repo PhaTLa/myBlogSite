@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Building Production-Ready Kubernetes Clusters on AWS EKS - Phạm Tùng Lâm - DevOps Engineer &amp; Solution Architect</title><meta name="Description" content="A comprehensive guide to setting up production-grade Amazon EKS clusters with best practices for security, networking, and observability."><meta property="og:url" content="http://localhost:1313/production-ready-eks-clusters/">
+  <meta property="og:site_name" content="Phạm Tùng Lâm - DevOps Engineer & Solution Architect">
+  <meta property="og:title" content="Building Production-Ready Kubernetes Clusters on AWS EKS">
+  <meta property="og:description" content="A comprehensive guide to setting up production-grade Amazon EKS clusters with best practices for security, networking, and observability.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-10-08T10:30:00+07:00">
+    <meta property="article:modified_time" content="2025-10-08T10:30:00+07:00">
+    <meta property="article:tag" content="AWS">
+    <meta property="article:tag" content="EKS">
+    <meta property="article:tag" content="Kubernetes">
+    <meta property="article:tag" content="DevOps">
+    <meta property="article:tag" content="Infrastructure">
+    <meta property="article:tag" content="Production">
+    <meta property="og:image" content="http://localhost:1313/images/avatar.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="http://localhost:1313/images/avatar.png">
+  <meta name="twitter:title" content="Building Production-Ready Kubernetes Clusters on AWS EKS">
+  <meta name="twitter:description" content="A comprehensive guide to setting up production-grade Amazon EKS clusters with best practices for security, networking, and observability.">
+<meta name="application-name" content="Lâm&#39;s DevOps Blog">
+<meta name="apple-mobile-web-app-title" content="Lâm&#39;s DevOps Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="icon" href="/favicon.svg"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://localhost:1313/production-ready-eks-clusters/" /><link rel="prev" href="http://localhost:1313/about_me/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Building Production-Ready Kubernetes Clusters on AWS EKS",
+        "inLanguage": "en-us",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/localhost:1313\/production-ready-eks-clusters\/"
+        },"image": ["http:\/\/localhost:1313\/images\/avatar.png"],"genre": "posts","keywords": "AWS, EKS, Kubernetes, DevOps, Infrastructure, Production","wordcount":  1260 ,
+        "url": "http:\/\/localhost:1313\/production-ready-eks-clusters\/","datePublished": "2025-10-08T10:30:00+07:00","dateModified": "2025-10-08T10:30:00+07:00","license": "© 2025 Phạm Tùng Lâm. All rights reserved.","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Phạm Tùng Lâm"
+            },"description": "A comprehensive guide to setting up production-grade Amazon EKS clusters with best practices for security, networking, and observability."
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Phạm Tùng Lâm - DevOps Engineer &amp; Solution Architect"><span class="header-title-pre"><i class='fab fa-aws'></i></span>Lâm&#39;s DevOps Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/" title="Technical Articles &amp; Insights"> Blog </a><a class="menu-item" href="/posts/about_me/" title="About Phạm Tùng Lâm"> About </a><a class="menu-item" href="/tags/" title="Browse by Technology"> Tags </a><a class="menu-item" href="/categories/" title="Browse by Category"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search technical content..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Phạm Tùng Lâm - DevOps Engineer &amp; Solution Architect"><span class="header-title-pre"><i class='fab fa-aws'></i></span>Lâm&#39;s DevOps Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search technical content..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="Technical Articles &amp; Insights">Blog</a><a class="menu-item" href="/posts/about_me/" title="About Phạm Tùng Lâm">About</a><a class="menu-item" href="/tags/" title="Browse by Technology">Tags</a><a class="menu-item" href="/categories/" title="Browse by Category">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Building Production-Ready Kubernetes Clusters on AWS EKS</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://www.linkedin.com/in/alexpham15010305" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Phạm Tùng Lâm</a></span>&nbsp;<span class="post-category">included in <a href="/categories/devops/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>DevOps</a>&nbsp;<a href="/categories/aws/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>AWS</a>&nbsp;<a href="/categories/kubernetes/"><i class="far fa-folder fa-fw" aria-hidden="true"></i>Kubernetes</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="2025-10-08">2025-10-08</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1260 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#-what-makes-a-cluster-production-ready">🎯 What Makes a Cluster &ldquo;Production-Ready&rdquo;?</a></li>
+    <li><a href="#-infrastructure-foundation">🏗️ Infrastructure Foundation</a>
+      <ul>
+        <li><a href="#vpc-design">VPC Design</a></li>
+        <li><a href="#eks-cluster-configuration">EKS Cluster Configuration</a></li>
+      </ul>
+    </li>
+    <li><a href="#-security-best-practices">🔐 Security Best Practices</a>
+      <ul>
+        <li><a href="#network-security">Network Security</a></li>
+        <li><a href="#rbac-configuration">RBAC Configuration</a></li>
+      </ul>
+    </li>
+    <li><a href="#-observability-stack">📊 Observability Stack</a>
+      <ul>
+        <li><a href="#prometheus-and-grafana-setup">Prometheus and Grafana Setup</a></li>
+        <li><a href="#cluster-autoscaler">Cluster Autoscaler</a></li>
+      </ul>
+    </li>
+    <li><a href="#-deployment-automation">🚀 Deployment Automation</a></li>
+    <li><a href="#-production-tips--lessons-learned">💡 Production Tips &amp; Lessons Learned</a>
+      <ul>
+        <li><a href="#1-cost-optimization">1. Cost Optimization</a></li>
+        <li><a href="#2-backup-strategy">2. Backup Strategy</a></li>
+        <li><a href="#3-security-scanning">3. Security Scanning</a></li>
+      </ul>
+    </li>
+    <li><a href="#-conclusion">🎉 Conclusion</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="building-production-ready-kubernetes-clusters-on-aws-eks">Building Production-Ready Kubernetes Clusters on AWS EKS</h1>
+<p>Amazon Elastic Kubernetes Service (EKS) has become the go-to solution for running Kubernetes workloads in AWS. However, setting up a truly production-ready EKS cluster involves much more than just clicking &ldquo;Create Cluster&rdquo; in the AWS console. In this post, I&rsquo;ll walk you through the essential components and best practices I&rsquo;ve learned from deploying and managing EKS clusters in production environments.</p>
+<h2 id="-what-makes-a-cluster-production-ready">🎯 What Makes a Cluster &ldquo;Production-Ready&rdquo;?</h2>
+<p>Before diving into the technical details, let&rsquo;s define what we mean by &ldquo;production-ready&rdquo;:</p>
+<ul>
+<li><strong>High Availability</strong>: Multi-AZ deployment with proper node distribution</li>
+<li><strong>Security</strong>: Network isolation, RBAC, pod security standards</li>
+<li><strong>Observability</strong>: Comprehensive monitoring, logging, and alerting</li>
+<li><strong>Scalability</strong>: Auto-scaling capabilities for both nodes and pods</li>
+<li><strong>Disaster Recovery</strong>: Backup strategies and recovery procedures</li>
+<li><strong>Cost Optimization</strong>: Right-sizing and efficient resource utilization</li>
+</ul>
+<h2 id="-infrastructure-foundation">🏗️ Infrastructure Foundation</h2>
+<h3 id="vpc-design">VPC Design</h3>
+<p>The foundation of any EKS cluster is a well-designed VPC. Here&rsquo;s the architecture I typically use:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># terraform/vpc.tf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">module &#34;vpc&#34; {</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">source = &#34;terraform-aws-modules/vpc/aws&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">name = &#34;eks-production-vpc&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">cidr = &#34;10.0.0.0/16&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">azs             = [&#34;us-west-2a&#34;, &#34;us-west-2b&#34;, &#34;us-west-2c&#34;]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">private_subnets = [&#34;10.0.1.0/24&#34;, &#34;10.0.2.0/24&#34;, &#34;10.0.3.0/24&#34;]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">public_subnets  = [&#34;10.0.101.0/24&#34;, &#34;10.0.102.0/24&#34;, &#34;10.0.103.0/24&#34;]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">enable_nat_gateway = true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">enable_vpn_gateway = false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">enable_dns_hostnames = true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">enable_dns_support = true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Required for EKS</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">public_subnet_tags = {</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s2">&#34;kubernetes.io/cluster/${var.cluster_name}&#34;</span><span class="w"> </span><span class="l">= &#34;shared&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s2">&#34;kubernetes.io/role/elb&#34;</span><span class="w">                    </span><span class="l">= &#34;1&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">private_subnet_tags = {</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s2">&#34;kubernetes.io/cluster/${var.cluster_name}&#34;</span><span class="w"> </span><span class="l">= &#34;shared&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s2">&#34;kubernetes.io/role/internal-elb&#34;</span><span class="w">           </span><span class="l">= &#34;1&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>}<span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="eks-cluster-configuration">EKS Cluster Configuration</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># terraform/eks.tf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">module &#34;eks&#34; {</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">source = &#34;terraform-aws-modules/eks/aws&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">cluster_name    = var.cluster_name</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">cluster_version = &#34;1.28&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">vpc_id     = module.vpc.vpc_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">subnet_ids = module.vpc.private_subnets</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Cluster endpoint configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">cluster_endpoint_private_access = true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">cluster_endpoint_public_access  = true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">cluster_endpoint_public_access_cidrs = [&#34;0.0.0.0/0&#34;]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Cluster encryption</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">cluster_encryption_config = [{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="l">provider_key_arn = aws_kms_key.eks.arn</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="l">resources        = [&#34;secrets&#34;]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>}<span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Cluster logging</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">cluster_enabled_log_types = [</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="s2">&#34;api&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;audit&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;authenticator&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;controllerManager&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;scheduler&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Node groups</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">eks_managed_node_groups = {</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="l">system = {</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="l">name = &#34;system-nodes&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="l">instance_types = [&#34;t3.medium&#34;]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="l">capacity_type  = &#34;ON_DEMAND&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="l">min_size     = 2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="l">max_size     = 4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="l">desired_size = 2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="l">labels = {</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="s2">&#34;node-type&#34;</span><span class="w"> </span><span class="l">= &#34;system&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="l">taints = [{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">key    = &#34;node-type&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">value  = &#34;system&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="l">effect = &#34;NO_SCHEDULE&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>}<span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="l">application = {</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="l">name = &#34;app-nodes&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="l">instance_types = [&#34;t3.large&#34;, &#34;t3.xlarge&#34;]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="l">capacity_type  = &#34;SPOT&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="l">min_size     = 2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="l">max_size     = 10</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="l">desired_size = 3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="l">labels = {</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="s2">&#34;node-type&#34;</span><span class="w"> </span><span class="l">= &#34;application&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>}<span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="-security-best-practices">🔐 Security Best Practices</h2>
+<h3 id="network-security">Network Security</h3>
+<p>Network security starts with proper subnet isolation and security groups:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># terraform/security-groups.tf</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">resource &#34;aws_security_group&#34; &#34;additional&#34; {</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">name_prefix = &#34;${var.cluster_name}-additional&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">vpc_id      = module.vpc.vpc_id</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">ingress {</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="l">from_port = 22</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="l">to_port   = 22</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="l">protocol  = &#34;tcp&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="l">cidr_blocks = [module.vpc.vpc_cidr_block]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">tags = {</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="l">Name = &#34;${var.cluster_name}-additional&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>}<span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>}<span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="rbac-configuration">RBAC Configuration</h3>
+<p>Implement proper Role-Based Access Control:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># k8s/rbac/developer-role.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">rbac.authorization.k8s.io/v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Role</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">development</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">developer</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">rules</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;pods&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;configmaps&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;secrets&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;services&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;get&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;list&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;watch&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;create&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;update&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;patch&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;delete&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">apiGroups</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;apps&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;deployments&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;replicasets&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">verbs</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;get&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;list&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;watch&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;create&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;update&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;patch&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;delete&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">rbac.authorization.k8s.io/v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">RoleBinding</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">developer-binding</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">development</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">subjects</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">User</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">developer-team</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l">rbac.authorization.k8s.io</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">roleRef</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Role</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">developer</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">apiGroup</span><span class="p">:</span><span class="w"> </span><span class="l">rbac.authorization.k8s.io</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="-observability-stack">📊 Observability Stack</h2>
+<h3 id="prometheus-and-grafana-setup">Prometheus and Grafana Setup</h3>
+<p>Deploy a comprehensive monitoring stack:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># k8s/monitoring/prometheus-values.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">prometheus</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">prometheusSpec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">retention</span><span class="p">:</span><span class="w"> </span><span class="l">30d</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">storageSpec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">volumeClaimTemplate</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l">gp3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">accessModes</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;ReadWriteOnce&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">resources</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">requests</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">storage</span><span class="p">:</span><span class="w"> </span><span class="l">50Gi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">requests</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l">2Gi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l">1000m</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">limits</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l">4Gi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l">2000m</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">grafana</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">persistence</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">storageClassName</span><span class="p">:</span><span class="w"> </span><span class="l">gp3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">size</span><span class="p">:</span><span class="w"> </span><span class="l">10Gi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">adminPassword</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;your-secure-password&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">grafana.ini</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">server</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">root_url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://grafana.yourdomain.com&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">security</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">disable_gravatar</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="cluster-autoscaler">Cluster Autoscaler</h3>
+<p>Implement automatic scaling:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># k8s/autoscaling/cluster-autoscaler.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">apps/v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Deployment</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">cluster-autoscaler</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">kube-system</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">selector</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">cluster-autoscaler</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">template</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l">cluster-autoscaler</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l">cluster-autoscaler</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">containers</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">k8s.gcr.io/autoscaling/cluster-autoscaler:v1.28.2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">cluster-autoscaler</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">resources</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">limits</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l">100m</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l">300Mi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">requests</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">cpu</span><span class="p">:</span><span class="w"> </span><span class="l">100m</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l">300Mi</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">./cluster-autoscaler</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- --<span class="l">v=4</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- --<span class="l">stderrthreshold=info</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- --<span class="l">cloud-provider=aws</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- --<span class="l">skip-nodes-with-local-storage=false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- --<span class="l">expander=least-waste</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- --<span class="l">node-group-auto-discovery=asg:tag=k8s.io/cluster-autoscaler/enabled,k8s.io/cluster-autoscaler/${CLUSTER_NAME}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">env</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">AWS_REGION</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">us-west-2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">CLUSTER_NAME</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l">production-eks</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="-deployment-automation">🚀 Deployment Automation</h2>
+<p>Here&rsquo;s a complete deployment script that ties everything together:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/bin/bash
+</span></span></span><span class="line"><span class="cl"><span class="cp"></span><span class="c1"># deploy.sh</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> -e
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nv">CLUSTER_NAME</span><span class="o">=</span><span class="s2">&#34;production-eks&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">AWS_REGION</span><span class="o">=</span><span class="s2">&#34;us-west-2&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;🚀 Deploying EKS cluster: </span><span class="nv">$CLUSTER_NAME</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Deploy infrastructure with Terraform</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;📦 Deploying infrastructure...&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> terraform
+</span></span><span class="line"><span class="cl">terraform init
+</span></span><span class="line"><span class="cl">terraform plan -var<span class="o">=</span><span class="s2">&#34;cluster_name=</span><span class="nv">$CLUSTER_NAME</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">terraform apply -auto-approve -var<span class="o">=</span><span class="s2">&#34;cluster_name=</span><span class="nv">$CLUSTER_NAME</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Update kubeconfig</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;🔧 Updating kubeconfig...&#34;</span>
+</span></span><span class="line"><span class="cl">aws eks update-kubeconfig --region <span class="nv">$AWS_REGION</span> --name <span class="nv">$CLUSTER_NAME</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Install essential add-ons</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;🔌 Installing cluster add-ons...&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># AWS Load Balancer Controller</span>
+</span></span><span class="line"><span class="cl">helm repo add eks https://aws.github.io/eks-charts
+</span></span><span class="line"><span class="cl">helm repo update
+</span></span><span class="line"><span class="cl">helm install aws-load-balancer-controller eks/aws-load-balancer-controller <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -n kube-system <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --set <span class="nv">clusterName</span><span class="o">=</span><span class="nv">$CLUSTER_NAME</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --set serviceAccount.create<span class="o">=</span><span class="nb">false</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --set serviceAccount.name<span class="o">=</span>aws-load-balancer-controller
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Prometheus monitoring stack</span>
+</span></span><span class="line"><span class="cl">helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+</span></span><span class="line"><span class="cl">helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -n monitoring <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --create-namespace <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  -f ../k8s/monitoring/prometheus-values.yaml
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Cluster Autoscaler</span>
+</span></span><span class="line"><span class="cl">kubectl apply -f ../k8s/autoscaling/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;✅ EKS cluster deployment completed!&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;🌐 Grafana Dashboard: kubectl port-forward -n monitoring svc/kube-prometheus-stack-grafana 3000:80&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="s2">&#34;📊 Prometheus UI: kubectl port-forward -n monitoring svc/kube-prometheus-stack-prometheus 9090:9090&#34;</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="-production-tips--lessons-learned">💡 Production Tips &amp; Lessons Learned</h2>
+<h3 id="1-cost-optimization">1. Cost Optimization</h3>
+<ul>
+<li>Use <strong>Spot Instances</strong> for non-critical workloads (can save 60-90%)</li>
+<li>Implement <strong>Horizontal Pod Autoscaler</strong> to right-size your applications</li>
+<li>Regular <strong>resource usage audits</strong> to identify waste</li>
+</ul>
+<h3 id="2-backup-strategy">2. Backup Strategy</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># velero-values.yaml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">configuration</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">aws</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">backupStorageLocation</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">bucket</span><span class="p">:</span><span class="w"> </span><span class="l">my-velero-backup-bucket</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l">us-west-2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">volumeSnapshotLocation</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">config</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="l">us-west-2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">schedules</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">daily-backup</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">schedule</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;0 2 * * *&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">template</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">ttl</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;720h&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">includedNamespaces</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">production</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">staging</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3-security-scanning">3. Security Scanning</h3>
+<p>Implement automated security scanning:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># .github/workflows/security-scan.yml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Security Scan</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">push</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">main]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">jobs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">security-scan</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l">ubuntu-latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">steps</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">actions/checkout@v3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Run Trivy vulnerability scanner</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l">aquasecurity/trivy-action@master</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">with</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">scan-type</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;fs&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">scan-ref</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;sarif&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">output</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;trivy-results.sarif&#39;</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="-conclusion">🎉 Conclusion</h2>
+<p>Building production-ready EKS clusters requires careful planning and attention to detail. The configuration I&rsquo;ve shared here forms a solid foundation, but remember that every production environment has unique requirements.</p>
+<p>Key takeaways:</p>
+<ul>
+<li><strong>Start with a solid VPC foundation</strong></li>
+<li><strong>Implement security from day one</strong></li>
+<li><strong>Plan for observability and monitoring</strong></li>
+<li><strong>Automate everything possible</strong></li>
+<li><strong>Test your disaster recovery procedures</strong></li>
+</ul>
+<p>In my next post, I&rsquo;ll dive deeper into <strong>advanced EKS networking patterns</strong> and <strong>service mesh integration</strong>. Stay tuned!</p>
+<hr>
+<p><em>Have questions about EKS or want to share your own experiences? Feel free to reach out on <a href="https://www.linkedin.com/in/alexpham15010305" target="_blank" rel="noopener noreffer ">LinkedIn</a> or drop me an <a href="mailto:phamtunglam.workmail.public@gmail.com" rel="">email</a>.</em></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2025-10-08</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/production-ready-eks-clusters/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://localhost:1313/production-ready-eks-clusters/" data-title="Building Production-Ready Kubernetes Clusters on AWS EKS" data-hashtags="AWS,EKS,Kubernetes,DevOps,Infrastructure,Production"><i class="fab fa-twitter fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://localhost:1313/production-ready-eks-clusters/" data-hashtag="AWS"><i class="fab fa-facebook-square fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="http://localhost:1313/production-ready-eks-clusters/"><i class="fab fa-linkedin fa-fw" aria-hidden="true"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://localhost:1313/production-ready-eks-clusters/" data-title="Building Production-Ready Kubernetes Clusters on AWS EKS"><i data-svg-src="/lib/simple-icons/icons/line.min.svg" aria-hidden="true"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw" aria-hidden="true"></i>&nbsp;<a href="/tags/aws/">AWS</a>,&nbsp;<a href="/tags/eks/">EKS</a>,&nbsp;<a href="/tags/kubernetes/">Kubernetes</a>,&nbsp;<a href="/tags/devops/">DevOps</a>,&nbsp;<a href="/tags/infrastructure/">Infrastructure</a>,&nbsp;<a href="/tags/production/">Production</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/about_me/" class="prev" rel="prev" title="About Me"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>About Me</a></div>
+</div>
+</article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.151.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.3.0"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2025</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://www.linkedin.com/in/alexpham15010305" target="_blank">Phạm Tùng Lâm</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":50,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

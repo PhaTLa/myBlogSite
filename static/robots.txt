@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://alexpham15010305.github.io/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /.git/
+Disallow: /themes/
