@@ -9,7 +9,7 @@ copyright = "© 2025 Phạm Tùng Lâm. All rights reserved."
 # whether to use robots.txt
 enableRobotsTXT = true
 # whether to use git commit log
-enableGitInfo = false
+enableGitInfo = true
 # whether to use emoji code
 enableEmoji = true
 
@@ -50,25 +50,25 @@ enableEmoji = true
   defaultTheme = "auto"
   
   # public git repo url
-  gitRepo = "https://github.com/alexpham15010305/blog" # Update with your actual repo
+  gitRepo = "https://github.com/PhaTLa/myBlogSite" # Update with your actual repo
   
   # date format
   dateFormat = "2006-01-02"
   
   # website images for Open Graph and Twitter Cards
-  images = ["/images/avatar.png"] # Add your professional photo here
+  images = ["https://pub-012e0e3c1b2643639bffe9b7fd5624e5.r2.dev/avatar_400x400.png"] # Add your professional photo here
   
   # Author config
   [params.author]
     name = "Phạm Tùng Lâm"
     email = "phamtunglam.workmail.public@gmail.com"
     link = "https://www.linkedin.com/in/alexpham15010305"
-    avatar = "/images/avatar.png" # Add your professional photo
+    avatar = "https://pub-012e0e3c1b2643639bffe9b7fd5624e5.r2.dev/avatar_400x400.png" # Add your professional photo
 
   # App icon config
   [params.app]
     # optional site title override for the app when added to an iOS home screen or Android launcher
-    title = "Lâm's DevOps Blog"
+    title = "Alex Pham's Blog"
     # whether to omit favicon resource links
     noFavicon = false
     # modern SVG favicon to use in place of older style .ico
@@ -106,9 +106,9 @@ enableEmoji = true
       # Gravatar Email for preferred avatar in home page
       gravatarEmail = ""
       # URL of avatar shown in home page
-      avatarURL = "/images/avatar.png"
+      avatarURL = "https://pub-012e0e3c1b2643639bffe9b7fd5624e5.r2.dev/avatar_400x400.png"
       # title shown in home page (HTML format is supported)
-      title = "Phạm Tùng Lâm"
+      title = "I am Alex Pham - Phạm Tùng Lâm"
       # subtitle shown in home page (HTML format is supported)
       subtitle = "DevOps Engineer & Solution Architect"
       # whether to use typeit animation for subtitle
@@ -183,7 +183,7 @@ enableEmoji = true
       # whether to show the copy button of the code block
       copy = true
       # whether to show the edit button of the code block
-      edit = true
+      edit = false
       # the maximum number of lines of displayed code by default
       maxShownLines = 50
     
@@ -254,11 +254,11 @@ enableEmoji = true
     # Header title config
     [params.header.title]
       # URL of the LOGO
-      logo = ""
+      logo = "https://pub-012e0e3c1b2643639bffe9b7fd5624e5.r2.dev/AlexPhamBlog_logo.png"
       # title name
-      name = "Lâm's DevOps Blog"
+      name = "Alex Pham's Blog"
       # you can add extra information before the name (HTML format is supported), such as icons
-      pre = "<i class='fab fa-aws'></i>"
+      pre = ""
       # you can add extra information after the name (HTML format is supported), such as icons
       post = ""
       # whether to use typeit animation for title name
@@ -270,7 +270,7 @@ enableEmoji = true
     # Custom content (HTML format is supported)
     custom = ""
     # whether to show Hugo and theme info
-    hugo = true
+    hugo = false
     # whether to show copyright info
     copyright = true
     # whether to show the author
@@ -328,9 +328,9 @@ enableEmoji = true
   # Site SEO config
   [params.seo]
     # image URL
-    image = "/images/avatar.png"
+    image = "https://pub-012e0e3c1b2643639bffe9b7fd5624e5.r2.dev/AlexPhamBlog_logo.png"
     # thumbnail URL
-    thumbnailUrl = "/images/avatar.png"
+    thumbnailUrl = "https://pub-012e0e3c1b2643639bffe9b7fd5624e5.r2.dev/AlexPhamBlog_logo.png"
 
   # Analytics config
   [params.analytics]

@@ -9,12 +9,12 @@ Hey there! I'm **Phạm Tùng Lâm**, a DevOps Engineer and Solution Architect p
 
 ## What You'll Find Here
 
-🔧 **DevOps Best Practices** - Real-world strategies that actually work  
-☁️ **AWS Deep Dives** - From basics to advanced architectural patterns  
-🚢 **Kubernetes Insights** - Container orchestration made practical  
-🤖 **Infrastructure as Code** - Terraform, Ansible, and automation techniques  
-📊 **Monitoring & Observability** - Building systems you can trust  
-🔄 **CI/CD Pipelines** - Smooth deployments from commit to production
+**DevOps Best Practices** - Real-world strategies that actually work  
+**AWS Deep Dives** - From basics to advanced architectural patterns  
+**Kubernetes Insights** - Container orchestration made practical  
+**Infrastructure as Code** - Terraform, Ansible, and automation techniques  
+**Monitoring & Observability** - Building systems you can trust  
+**CI/CD Pipelines** - Smooth deployments from commit to production
 
 ## Recent Highlights
 

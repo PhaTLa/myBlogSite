@@ -1,6 +1,10 @@
 # Building Production-Ready Kubernetes Clusters on AWS EKS
 
 
+<p align="center">
+    <img src="https://pub-012e0e3c1b2643639bffe9b7fd5624e5.r2.dev/homelab.jpg" alt="Phạm Tùng Lâm Homelab" title="DevOps Engineer & Solution Architect" style="width:100%; height:240px; object-fit:cover; box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
+</p>
+
 # Building Production-Ready Kubernetes Clusters on AWS EKS
 
 Amazon Elastic Kubernetes Service (EKS) has become the go-to solution for running Kubernetes workloads in AWS. However, setting up a truly production-ready EKS cluster involves much more than just clicking "Create Cluster" in the AWS console. In this post, I'll walk you through the essential components and best practices I've learned from deploying and managing EKS clusters in production environments.
