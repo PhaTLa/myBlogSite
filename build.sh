@@ -59,6 +59,8 @@ main() {
     git fetch --unshallow
   fi
 
+  git submodule update --init --recursive
+
   # Build the site
   echo "Building the site..."
   hugo --gc --minify
