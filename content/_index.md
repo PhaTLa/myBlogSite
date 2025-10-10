@@ -5,7 +5,7 @@ description = "Technical insights, best practices, and real-world experiences in
 
 # Welcome to My Technical Blog
 
-Hey there! I'm **Phạm Tùng Lâm**, a DevOps Engineer and Solution Architect passionate about bridging the gap between development and operations. This blog is where I share my journey, insights, and lessons learned in the ever-evolving world of DevOps.
+Hey there! I'm **Phạm Tùng Lâm** (Alex), a DevOps Engineer and Solution Architect passionate about bridging the gap between development and operations. This blog is where I share my journey, insights, and lessons learned in the ever-evolving world of DevOps.
 
 ## What You'll Find Here
 
