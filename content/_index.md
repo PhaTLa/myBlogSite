@@ -9,13 +9,13 @@ Hey there! I'm **Phạm Tùng Lâm** (Alex Pham), a DevOps Engineer want to beco
 
 ## What You'll Find Here
 
-**DevOps** - Real-world strategies that actually work, I will share what I learned from my career or people around me.
-**Cloud and On-Premise** - From basics to advanced architectural patterns, Cloud is just someone's computer.
-**Docker/Kubernetes** - Container orchestration made practical.
-**Infrastructure as Code** - Terraform, Ansible, and automation techniques.
-**Monitoring & Observability** - Building systems you can trust.
-**CI/CD Pipelines** - Smooth deployments from commit to production.
-**Miscellaneous technical insights** - Sometime I just want to share something useful.
+- **DevOps** - Real-world strategies that actually work, I will share what I learned from my career or people around me.
+- **Cloud and On-Premise** - From basics to advanced architectural patterns, Cloud is just someone's computer.
+- **Docker/Kubernetes** - Container orchestration made practical.
+- **Infrastructure as Code** - Terraform, Ansible, and automation techniques.
+- **Monitoring & Observability** - Building systems you can trust.
+- **CI/CD Pipelines** - Smooth deployments from commit to production.
+- **Miscellaneous technical insights** - Sometime I just want to share something useful.
 
 ---
 
