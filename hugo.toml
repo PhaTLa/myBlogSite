@@ -425,3 +425,14 @@ enableEmoji = true
   section = ["HTML", "RSS"]
   taxonomy = ["HTML", "RSS"]
   taxonomyTerm = ["HTML"]
+
+[languages]
+  [languages.en]
+    languageName = "English"
+    weight = 1
+    contentDir = "content/en"
+
+  [languages.vi]
+    languageName = "Tiếng Việt"
+    weight = 2
+    contentDir = "content/vi"

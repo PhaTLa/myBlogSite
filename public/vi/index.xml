@@ -1,10 +1,10 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Phạm Tùng Lâm - DevOps Engineer &amp; Solution Architect</title>
-        <link>http://localhost:1313/</link>
+        <link>http://localhost:1313/vi/</link>
         <description>DevOps Engineer &amp; Solution Architect specializing in AWS, Kubernetes, CI/CD, and Infrastructure as Code</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>phamtunglam.workmail.public@gmail.com (Phạm Tùng Lâm)</managingEditor>
+        <generator>Hugo -- gohugo.io</generator><language>vi</language><managingEditor>phamtunglam.workmail.public@gmail.com (Phạm Tùng Lâm)</managingEditor>
             <webMaster>phamtunglam.workmail.public@gmail.com (Phạm Tùng Lâm)</webMaster><copyright>© 2025 Phạm Tùng Lâm. All rights reserved.</copyright>
-            <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+            <atom:link href="http://localhost:1313/vi/index.xml" rel="self" type="application/rss+xml" />
         </channel>
 </rss>
