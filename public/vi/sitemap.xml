@@ -2,7 +2,25 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://localhost:1313/vi/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>http://localhost:1313/vi/categories/aws/</loc><lastmod>2025-10-15T11:41:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="http://localhost:1313/categories/aws/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="vi"
+                    href="http://localhost:1313/vi/categories/aws/"
+                    /></url><url>
+            <loc>http://localhost:1313/vi/tags/aws/</loc><lastmod>2025-10-15T11:41:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="http://localhost:1313/tags/aws/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="vi"
+                    href="http://localhost:1313/vi/tags/aws/"
+                    /></url><url>
+            <loc>http://localhost:1313/vi/categories/</loc><lastmod>2025-10-15T11:41:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/categories/"
@@ -11,16 +29,79 @@
                     hreflang="vi"
                     href="http://localhost:1313/vi/categories/"
                     /></url><url>
-            <loc>http://localhost:1313/vi/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>http://localhost:1313/vi/categories/devops/</loc><lastmod>2025-10-15T11:41:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
-                        href="http://localhost:1313/"
+                        href="http://localhost:1313/categories/devops/"
                         /><xhtml:link
                     rel="alternate"
                     hreflang="vi"
-                    href="http://localhost:1313/vi/"
+                    href="http://localhost:1313/vi/categories/devops/"
                     /></url><url>
-            <loc>http://localhost:1313/vi/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
+            <loc>http://localhost:1313/vi/tags/devops/</loc><lastmod>2025-10-15T11:41:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="http://localhost:1313/tags/devops/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="vi"
+                    href="http://localhost:1313/vi/tags/devops/"
+                    /></url><url>
+            <loc>http://localhost:1313/vi/tags/eks/</loc><lastmod>2025-10-15T11:41:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="http://localhost:1313/tags/eks/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="vi"
+                    href="http://localhost:1313/vi/tags/eks/"
+                    /></url><url>
+            <loc>http://localhost:1313/vi/tags/infrastructure/</loc><lastmod>2025-10-15T11:41:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="http://localhost:1313/tags/infrastructure/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="vi"
+                    href="http://localhost:1313/vi/tags/infrastructure/"
+                    /></url><url>
+            <loc>http://localhost:1313/vi/categories/kubernetes/</loc><lastmod>2025-10-15T11:41:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="http://localhost:1313/categories/kubernetes/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="vi"
+                    href="http://localhost:1313/vi/categories/kubernetes/"
+                    /></url><url>
+            <loc>http://localhost:1313/vi/tags/kubernetes/</loc><lastmod>2025-10-15T11:41:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="http://localhost:1313/tags/kubernetes/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="vi"
+                    href="http://localhost:1313/vi/tags/kubernetes/"
+                    /></url><url>
+            <loc>http://localhost:1313/vi/posts/</loc><lastmod>2025-10-15T11:41:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="http://localhost:1313/posts/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="vi"
+                    href="http://localhost:1313/vi/posts/"
+                    /></url><url>
+            <loc>http://localhost:1313/vi/tags/production/</loc><lastmod>2025-10-15T11:41:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="http://localhost:1313/tags/production/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="vi"
+                    href="http://localhost:1313/vi/tags/production/"
+                    /></url><url>
+            <loc>http://localhost:1313/vi/tags/</loc><lastmod>2025-10-15T11:41:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="en"
                         href="http://localhost:1313/tags/"
@@ -28,4 +109,58 @@
                     rel="alternate"
                     hreflang="vi"
                     href="http://localhost:1313/vi/tags/"
+                    /></url><url>
+            <loc>http://localhost:1313/vi/production-ready-eks-clusters/</loc><lastmod>2025-10-15T11:41:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="http://localhost:1313/production-ready-eks-clusters/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="vi"
+                    href="http://localhost:1313/vi/production-ready-eks-clusters/"
+                    /></url><url>
+            <loc>http://localhost:1313/vi/tags/about/</loc><lastmod>2025-10-15T11:41:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="http://localhost:1313/tags/about/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="vi"
+                    href="http://localhost:1313/vi/tags/about/"
+                    /></url><url>
+            <loc>http://localhost:1313/vi/tags/career/</loc><lastmod>2025-10-15T11:41:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="http://localhost:1313/tags/career/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="vi"
+                    href="http://localhost:1313/vi/tags/career/"
+                    /></url><url>
+            <loc>http://localhost:1313/vi/categories/personal/</loc><lastmod>2025-10-15T11:41:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="http://localhost:1313/categories/personal/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="vi"
+                    href="http://localhost:1313/vi/categories/personal/"
+                    /></url><url>
+            <loc>http://localhost:1313/vi/about_me/</loc><lastmod>2025-10-15T11:41:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="http://localhost:1313/about_me/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="vi"
+                    href="http://localhost:1313/vi/about_me/"
+                    /></url><url>
+            <loc>http://localhost:1313/vi/</loc><lastmod>2025-10-15T11:41:46&#43;07:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+                        rel="alternate"
+                        hreflang="en"
+                        href="http://localhost:1313/"
+                        /><xhtml:link
+                    rel="alternate"
+                    hreflang="vi"
+                    href="http://localhost:1313/vi/"
                     /></url></urlset>

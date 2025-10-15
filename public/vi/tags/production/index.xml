@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Production on Phạm Tùng Lâm - DevOps Engineer &amp; Solution Architect</title>
+    <link>http://localhost:1313/vi/tags/production/</link>
+    <description>Recent content in Production on Phạm Tùng Lâm - DevOps Engineer &amp; Solution Architect</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <managingEditor>phamtunglam.workmail.public@gmail.com (Phạm Tùng Lâm)</managingEditor>
+    <webMaster>phamtunglam.workmail.public@gmail.com (Phạm Tùng Lâm)</webMaster>
+    <copyright>© 2025 Phạm Tùng Lâm. All rights reserved.</copyright>
+    <lastBuildDate>Wed, 15 Oct 2025 11:41:46 +0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/vi/tags/production/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Xây dựng các cụm Kubernetes sẵn sàng sản xuất trên AWS EKS</title>
+      <link>http://localhost:1313/vi/production-ready-eks-clusters/</link>
+      <pubDate>Wed, 08 Oct 2025 10:30:00 +0700</pubDate><author>phamtunglam.workmail.public@gmail.com (Phạm Tùng Lâm)</author>
+      <guid>http://localhost:1313/vi/production-ready-eks-clusters/</guid>
+      <description>&lt;p align=&#34;center&#34;&gt;&#xA;    &lt;img src=&#34;https://pub-012e0e3c1b2643639bffe9b7fd5624e5.r2.dev/homelab.jpg&#34; alt=&#34;Phạm Tùng Lâm Homelab&#34; title=&#34;DevOps Engineer &amp; Solution Architect&#34; style=&#34;width:100%; height:240px; object-fit:cover; box-shadow:0 2px 8px rgba(0,0,0,0.1);&#34; /&gt;&#xA;&lt;/p&gt;&#xA;&lt;h1 id=&#34;xây-dựng-các-cụm-kubernetes-sẵn-sàng-sản-xuất-trên-aws-eks&#34;&gt;Xây dựng các cụm Kubernetes sẵn sàng sản xuất trên AWS EKS&lt;/h1&gt;&#xA;&lt;p&gt;Amazon Elastic Kubernetes Service (EKS) đã trở thành giải pháp hàng đầu để chạy các workload Kubernetes trong AWS. Tuy nhiên, việc thiết lập một cụm EKS thực sự sẵn sàng cho sản xuất đòi hỏi nhiều hơn việc chỉ nhấp &amp;ldquo;Create Cluster&amp;rdquo; trong console AWS. Trong bài viết này, tôi sẽ hướng dẫn bạn qua các thành phần thiết yếu và thực tiễn tốt nhất mà tôi đã học được từ việc triển khai và quản lý các cụm EKS trong môi trường sản xuất.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

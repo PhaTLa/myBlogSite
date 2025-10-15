@@ -6,5 +6,35 @@
         <generator>Hugo -- gohugo.io</generator><language>vi</language><managingEditor>phamtunglam.workmail.public@gmail.com (Phạm Tùng Lâm)</managingEditor>
             <webMaster>phamtunglam.workmail.public@gmail.com (Phạm Tùng Lâm)</webMaster><copyright>© 2025 Phạm Tùng Lâm. All rights reserved.</copyright>
             <atom:link href="http://localhost:1313/vi/index.xml" rel="self" type="application/rss+xml" />
-        </channel>
+        <item>
+    <title>Xây dựng các cụm Kubernetes sẵn sàng sản xuất trên AWS EKS</title>
+    <link>http://localhost:1313/vi/production-ready-eks-clusters/</link>
+    <pubDate>Wed, 08 Oct 2025 10:30:00 &#43;0700</pubDate>
+    <author>Phạm Tùng Lâm</author>
+    <guid>http://localhost:1313/vi/production-ready-eks-clusters/</guid>
+    <description><![CDATA[<p align="center">
+    
+</p>
+<h1 id="xây-dựng-các-cụm-kubernetes-sẵn-sàng-sản-xuất-trên-aws-eks">Xây dựng các cụm Kubernetes sẵn sàng sản xuất trên AWS EKS</h1>
+<p>Amazon Elastic Kubernetes Service (EKS) đã trở thành giải pháp hàng đầu để chạy các workload Kubernetes trong AWS. Tuy nhiên, việc thiết lập một cụm EKS thực sự sẵn sàng cho sản xuất đòi hỏi nhiều hơn việc chỉ nhấp &ldquo;Create Cluster&rdquo; trong console AWS. Trong bài viết này, tôi sẽ hướng dẫn bạn qua các thành phần thiết yếu và thực tiễn tốt nhất mà tôi đã học được từ việc triển khai và quản lý các cụm EKS trong môi trường sản xuất.</p>]]></description>
+</item>
+<item>
+    <title>Về tôi</title>
+    <link>http://localhost:1313/vi/about_me/</link>
+    <pubDate>Wed, 01 Oct 2025 14:39:29 &#43;0700</pubDate>
+    <author>Phạm Tùng Lâm</author>
+    <guid>http://localhost:1313/vi/about_me/</guid>
+    <description><![CDATA[<h1 id="về-phạm-tùng-lâm">Về Phạm Tùng Lâm</h1>
+<p align="center">
+    
+</p>
+<h2 id="kỹ-sư-devops--solution-architect">Kỹ sư DevOps &amp; Solution Architect</h2>
+<p><strong>Vị trí:</strong> Hà Đông, Hà Nội, Việt Nam<br>
+<strong>Email:</strong> <a href="mailto:phamtunglam.workmail.public@gmail.com" rel="">phamtunglam.workmail.public@gmail.com</a><br>
+<strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/alexpham15010305" target="_blank" rel="noopener noreffer ">alexpham15010305</a></p>
+<hr>
+<h2 id="tầm-nhìn-nghề-nghiệp">Tầm nhìn nghề nghiệp</h2>
+<p>Mục tiêu trước mắt của tôi là tiếp tục phát triển năng lực và tìm kiếm những thách thức mới trong lĩnh vực DevOps, đảm bảo rằng tôi có thể đóng góp hiệu quả cho một đội ngũ năng động trong khi luôn cập nhật các công nghệ và phương pháp mới nhất. Trong tương lai, tôi khát khao phát triển thành vai trò <strong>Solution Architect</strong>, nơi tôi có thể thiết kế và triển khai các giải pháp sáng tạo ở quy mô lớn hơn.</p>]]></description>
+</item>
+</channel>
 </rss>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
     <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +8,7 @@
   <meta property="og:site_name" content="Phạm Tùng Lâm - DevOps Engineer & Solution Architect">
   <meta property="og:title" content="Posts">
   <meta property="og:description" content="DevOps Engineer &amp; Solution Architect specializing in AWS, Kubernetes, CI/CD, and Infrastructure as Code">
-  <meta property="og:locale" content="en_us">
+  <meta property="og:locale" content="en">
   <meta property="og:type" content="website">
     <meta property="og:image" content="https://pub-012e0e3c1b2643639bffe9b7fd5624e5.r2.dev/avatar_400x400.png">
 
@@ -49,6 +49,9 @@
                         </span>
                     </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                     <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a><a href="javascript:void(0);" class="menu-item language" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>                      
+                    <select class="language-select" id="language-select-desktop" onchange="location = this.value;"><option value="/posts/" selected>English</option><option value="/vi/posts/">Tiếng Việt</option></select>
                 </a></div>
         </div>
     </div>
@@ -87,7 +90,10 @@
                     </a>
                 </div><a class="menu-item" href="/posts/" title="Technical Articles &amp; Insights">Blog</a><a class="menu-item" href="/posts/about_me/" title="About Phạm Tùng Lâm">About</a><a class="menu-item" href="/tags/" title="Browse by Technology">Tags</a><a class="menu-item" href="/categories/" title="Browse by Category">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
-            </a></div>
+            </a><a href="javascript:void(0);" class="menu-item" title="Select Language">
+                    <i class="fa fa-globe fa-fw" aria-hidden="true"></i>
+                    <select class="language-select" onchange="location = this.value;"><option value="/posts/" selected>English</option><option value="/vi/posts/">Tiếng Việt</option></select>
+                </a></div>
     </div>
 </header><div class="search-dropdown desktop">
         <div id="search-dropdown-desktop"></div>

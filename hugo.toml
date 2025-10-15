@@ -108,9 +108,9 @@ enableEmoji = true
       # URL of avatar shown in home page
       avatarURL = "https://pub-012e0e3c1b2643639bffe9b7fd5624e5.r2.dev/avatar_400x400.png"
       # title shown in home page (HTML format is supported)
-      title = "I am Alex Pham - Phạm Tùng Lâm"
+      title = "Phạm Tùng Lâm"
       # subtitle shown in home page (HTML format is supported)
-      subtitle = "DevOps Engineer & Solution Architect"
+      subtitle = "DevOps Engineer"
       # whether to use typeit animation for subtitle
       typeit = true
       # whether to show social links
@@ -125,7 +125,7 @@ enableEmoji = true
 
   # Social config in home page
   [params.social]
-    GitHub = "alexpham15010305"
+    GitHub = "PhaTLa"
     Linkedin = "alexpham15010305"
     Email = "phamtunglam.workmail.public@gmail.com"
     RSS = true
@@ -430,9 +430,12 @@ enableEmoji = true
   [languages.en]
     languageName = "English"
     weight = 1
-    contentDir = "content/en"
+    contentDir = "content/myDir/en"
 
   [languages.vi]
     languageName = "Tiếng Việt"
     weight = 2
-    contentDir = "content/vi"
+    contentDir = "content/myDir/vi"
+
+[frontmatter]
+  lastmod = ["lastmod", ":fileModTime", ":git"]

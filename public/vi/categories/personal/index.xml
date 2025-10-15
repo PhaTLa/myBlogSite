@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Personal on Phạm Tùng Lâm - DevOps Engineer &amp; Solution Architect</title>
+    <link>http://localhost:1313/vi/categories/personal/</link>
+    <description>Recent content in Personal on Phạm Tùng Lâm - DevOps Engineer &amp; Solution Architect</description>
+    <generator>Hugo</generator>
+    <language>vi</language>
+    <managingEditor>phamtunglam.workmail.public@gmail.com (Phạm Tùng Lâm)</managingEditor>
+    <webMaster>phamtunglam.workmail.public@gmail.com (Phạm Tùng Lâm)</webMaster>
+    <copyright>© 2025 Phạm Tùng Lâm. All rights reserved.</copyright>
+    <lastBuildDate>Wed, 15 Oct 2025 11:41:46 +0700</lastBuildDate>
+    <atom:link href="http://localhost:1313/vi/categories/personal/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Về tôi</title>
+      <link>http://localhost:1313/vi/about_me/</link>
+      <pubDate>Wed, 01 Oct 2025 14:39:29 +0700</pubDate><author>phamtunglam.workmail.public@gmail.com (Phạm Tùng Lâm)</author>
+      <guid>http://localhost:1313/vi/about_me/</guid>
+      <description>&lt;h1 id=&#34;về-phạm-tùng-lâm&#34;&gt;Về Phạm Tùng Lâm&lt;/h1&gt;&#xA;&lt;p align=&#34;center&#34;&gt;&#xA;    &lt;img src=&#34;https://pub-012e0e3c1b2643639bffe9b7fd5624e5.r2.dev/avatar_400x400.png&#34; alt=&#34;Phạm Tùng Lâm&#34; title=&#34;DevOps Engineer &amp; Solution Architect&#34; style=&#34;width:240px; height:240px; border-radius:50%; object-fit:cover; box-shadow:0 2px 8px rgba(0,0,0,0.1);&#34; /&gt;&#xA;&lt;/p&gt;&#xA;&lt;h2 id=&#34;kỹ-sư-devops--solution-architect&#34;&gt;Kỹ sư DevOps &amp;amp; Solution Architect&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Vị trí:&lt;/strong&gt; Hà Đông, Hà Nội, Việt Nam&lt;br&gt;&#xA;&lt;strong&gt;Email:&lt;/strong&gt; &lt;a href=&#34;mailto:phamtunglam.workmail.public@gmail.com&#34; rel=&#34;&#34;&gt;phamtunglam.workmail.public@gmail.com&lt;/a&gt;&lt;br&gt;&#xA;&lt;strong&gt;LinkedIn:&lt;/strong&gt; &lt;a href=&#34;https://www.linkedin.com/in/alexpham15010305&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer &#34;&gt;alexpham15010305&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;tầm-nhìn-nghề-nghiệp&#34;&gt;Tầm nhìn nghề nghiệp&lt;/h2&gt;&#xA;&lt;p&gt;Mục tiêu trước mắt của tôi là tiếp tục phát triển năng lực và tìm kiếm những thách thức mới trong lĩnh vực DevOps, đảm bảo rằng tôi có thể đóng góp hiệu quả cho một đội ngũ năng động trong khi luôn cập nhật các công nghệ và phương pháp mới nhất. Trong tương lai, tôi khát khao phát triển thành vai trò &lt;strong&gt;Solution Architect&lt;/strong&gt;, nơi tôi có thể thiết kế và triển khai các giải pháp sáng tạo ở quy mô lớn hơn.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

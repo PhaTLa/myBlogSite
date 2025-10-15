@@ -6,5 +6,35 @@
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>phamtunglam.workmail.public@gmail.com (Phạm Tùng Lâm)</managingEditor>
             <webMaster>phamtunglam.workmail.public@gmail.com (Phạm Tùng Lâm)</webMaster><copyright>© 2025 Phạm Tùng Lâm. All rights reserved.</copyright>
             <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-        </channel>
+        <item>
+    <title>Building Production-Ready Kubernetes Clusters on AWS EKS</title>
+    <link>http://localhost:1313/production-ready-eks-clusters/</link>
+    <pubDate>Wed, 08 Oct 2025 10:30:00 &#43;0700</pubDate>
+    <author>Phạm Tùng Lâm</author>
+    <guid>http://localhost:1313/production-ready-eks-clusters/</guid>
+    <description><![CDATA[<p align="center">
+    
+</p>
+<h1 id="building-production-ready-kubernetes-clusters-on-aws-eks">Building Production-Ready Kubernetes Clusters on AWS EKS</h1>
+<p>Amazon Elastic Kubernetes Service (EKS) has become the go-to solution for running Kubernetes workloads in AWS. However, setting up a truly production-ready EKS cluster involves much more than just clicking &ldquo;Create Cluster&rdquo; in the AWS console. In this post, I&rsquo;ll walk you through the essential components and best practices I&rsquo;ve learned from deploying and managing EKS clusters in production environments.</p>]]></description>
+</item>
+<item>
+    <title>About Me</title>
+    <link>http://localhost:1313/about_me/</link>
+    <pubDate>Wed, 01 Oct 2025 14:39:29 &#43;0700</pubDate>
+    <author>Phạm Tùng Lâm</author>
+    <guid>http://localhost:1313/about_me/</guid>
+    <description><![CDATA[<h1 id="about-phạm-tùng-lâm">About Phạm Tùng Lâm</h1>
+<p align="center">
+    
+</p>
+<h2 id="devops-engineer--solution-architect">DevOps Engineer &amp; Solution Architect</h2>
+<p><strong>Location:</strong> Ha Dong, Ha Noi City, Vietnam<br>
+<strong>Email:</strong> <a href="mailto:phamtunglam.workmail.public@gmail.com" rel="">phamtunglam.workmail.public@gmail.com</a><br>
+<strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/alexpham15010305" target="_blank" rel="noopener noreffer ">alexpham15010305</a></p>
+<hr>
+<h2 id="career-vision">Career Vision</h2>
+<p>My immediate goal is to further develop my capabilities and seek new challenges in the DevOps field, ensuring that I can contribute effectively to a dynamic team while keeping abreast of the latest technologies and methodologies. In the future, I aspire to evolve into a <strong>Solution Architect</strong> role, where I can design and implement innovative solutions on a larger scale.</p>]]></description>
+</item>
+</channel>
 </rss>
